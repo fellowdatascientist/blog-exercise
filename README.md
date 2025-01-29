@@ -4,13 +4,13 @@ A task to assess full stack developer
 
 # Task description
 - Fork [this](https://github.com/fellowdatascientist/blog-exercise) github repository. 
-- You have a sqlite database in the root directory called `blogs` which contains multiple tables. Spend some time to understand the individual tables
+- You have a sqlite database in the root directory called `blogs.db` which contains multiple tables. Spend some time to understand the individual tables
 - Using any front end stack, create the following screens
   - `Login screen` asking for useremail and password
   - `Home page` which displays all the blog titles as thumbnail. Each blog thumbnail should have the following
-     - Blog image
-     - Blog title
-     - Blog created date
+    - Blog image
+    - Blog title
+    - Blog created date
   - Home page should have a navbar with following details
     - Page name
     - User icon which displays (on-click) user details and logout button 
