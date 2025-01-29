@@ -3,7 +3,7 @@ A task to assess full stack developer
 
 
 # Task description
-
+1. Fork [this](https://github.com/fellowdatascientist/blog-exercise) github repository. 
 1. You have a sqlite database in the root directory called `blogs` which contains multiple tables. Spend some time to understand the individual tables
 2. Using any front end stack, create the following screens
   - `Login screen` asking for useremail and password
