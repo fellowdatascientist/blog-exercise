@@ -1,4 +1,4 @@
-# blog-exercise
+# Lets build a blog from scratch
 A task to assess full stack developer
 
 
