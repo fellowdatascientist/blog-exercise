@@ -4,6 +4,7 @@ const cors = require('cors');
 const router = require('./routes/auth.route');
 const connectDB = require('./config/connectionDB')
 
+
 const app = express();
 
 app.use(express.json());
