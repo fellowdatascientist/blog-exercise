@@ -1,16 +1,22 @@
 const express = require('express');
 require('dotenv').config()
 const cors = require('cors');
-const router = require('./routes/auth.route');
+const authRouter = require('./routes/auth.route');
 const connectDB = require('./config/connectionDB')
-
+const corsAllows = require('./utils/corsAllows.utils')
 
 const app = express();
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin: corsAllows.origin,
+    methods: corsAllows.methods,
+    allowedHeaders: corsAllows.allowedHeaders,
+    credentials:corsAllows.credentials
+}));
 
-app.use('/v1/api/auth',router)
+app.use('/v1/api/auth',authRouter)
+
 app.use('/v1/api/blog',()=>{
     console.log('blog')
 })
