@@ -1,7 +1,7 @@
 const corsAllows = {
-    origin:[process.env.CORS_ORIGIN],
-    methods: [process.env.CORS_METHODS],
-    allowedHeaders: [process.env.CORS_HEADERS],
-    credentials:process.env.CORS_CREDENTIALS
-}
+    origin: process.env.CORS_ORIGIN.split(","), 
+    methods: process.env.CORS_METHODS.split(","),
+    allowedHeaders: process.env.CORS_HEADERS.split(","),
+    credentials: process.env.CORS_CREDENTIALS === "true"
+};
 module.exports = corsAllows
