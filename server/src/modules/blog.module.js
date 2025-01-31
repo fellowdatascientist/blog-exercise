@@ -1,18 +1,34 @@
 const mongoose = require('mongoose');
-const {uuid:v4} = require('uuid');
+const { v4: uuidv4 } = require('uuid');
 
 const blogSchema = new mongoose.Schema({
-    _id:{
-        type:String,
-        default:v4
+    _id: {
+        type: String,
+        default: uuidv4 
     },
-    title:String,
-    content:String,
-    userId:{type:String,ref:"User"},
-    publishedAt:{type:Date,default:Date.now},
-    updatedAt:{type:Date,default:Date.now}
+    title: { 
+        type: String, 
+        required: true 
+    },
+    content: { 
+        type: String, 
+        required: true 
+    },
+    userId: { 
+        type: String, 
+        ref: "User",
+        required: true
+    },
+    publishedAt: { 
+        type: Date, 
+        default: Date.now 
+    },
+    updatedAt: { 
+        type: Date, 
+        default: Date.now 
+    }
 });
 
-const Blog = mongoose.Schema("Blog",blogSchema);
+const Blog = mongoose.model("Blog", blogSchema);
 
 module.exports = Blog;

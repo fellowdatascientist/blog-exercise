@@ -1,13 +1,27 @@
-import { useState } from 'react'
 import './App.css'
+import { createBrowserRouter , createRoutesFromElements ,RouterProvider, Route} from 'react-router-dom'
+import RootLayout from './layout/RootLayout'
+import BlogLayout from './layout/BlogLayout'
+import SinglePostLayout from './layout/SinglePostLayout'
+import PagesLayout from './layout/PagesLayout'
+import ContactLayout from './layout/ContactLayout'
+import Home from './pages/Home'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const Router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path='/' element={<RootLayout/>}>
+        <Route index element={<Home/>}/>
+        <Route path='blog' element={<BlogLayout/>}/>
+        <Route path='post' element={<SinglePostLayout/>}/>
+        <Route path='pages' element={<PagesLayout/>}/>
+        <Route path='contact' element={<ContactLayout/>}/>
+      </Route>
+    )
+  )
 
   return (
-    <>
-      <div className='w-full h-20 bg-amber-200'>Header</div>
-    </>
+    <RouterProvider router={Router}/>
   )
 }
 
