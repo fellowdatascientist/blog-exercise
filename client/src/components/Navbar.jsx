@@ -27,7 +27,7 @@ const Navbar = () => {
             </button>
 
             {/* Navigation Links */}
-            <nav className={`absolute md:static top-20 left-0 w-full md:w-auto bg-white md:bg-transparent md:flex space-x-6 px-6 py-4 md:p-0 shadow-md md:shadow-none ${menuOpen ? 'block' : 'hidden'}`}>
+            <nav className={`absolute md:static top-20 left-0 w-full md:w-auto bg-white md:bg-transparent md:flex space-x-9 px-6 py-4 md:p-0 shadow-md md:shadow-none ${menuOpen ? 'block' : 'hidden'}`}>
                 <NavLink className={({ isActive }) => isActive ? 'text-gray-950 font-semibold border-b-2 border-gray-950 pb-1' : 'text-gray-500'} to="/">Home</NavLink>
                 <NavLink className={({ isActive }) => isActive ? 'text-gray-950 font-semibold border-b-2 border-gray-950 pb-1' : 'text-gray-500'} to="/blog">Blog</NavLink>
                 <NavLink className={({ isActive }) => isActive ? 'text-gray-950 font-semibold border-b-2 border-gray-950 pb-1' : 'text-gray-500'} to="/post">Single Post</NavLink>
