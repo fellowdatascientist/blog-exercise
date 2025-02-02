@@ -8,7 +8,7 @@ import { ThemeContext } from '../context/ThemeContext';
 const Navbar = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [menuOpen, setMenuOpen] = useState(false);
-    const { theme } = useContext(ThemeContext);
+    const { theme, toggleTheme } = useContext(ThemeContext);
 
     const handleSearch = (e) => {
         e.preventDefault();
@@ -47,7 +47,7 @@ const Navbar = () => {
                         onChange={(e) => setSearchTerm(e.target.value)}
                     />
                     <button type="submit" className="absolute right-3">
-                        <IoSearchSharp className='text-gray-500' size={20} />
+                        <IoSearchSharp className='text-gray-500' size={20} onClick={()=>toggleTheme()} />
                     </button>
                 </form>
             </div>
