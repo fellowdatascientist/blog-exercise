@@ -40,7 +40,7 @@ const Footer = () => {
         </div>
 
         {/* Newsletter Section */}
-        <div className="text-center flex-1 max-w-md py-6 px-6 bg-white rounded-2xl shadow-md">
+        <div className="text-center flex-1 max-w-md py-6 px-10 bg-white rounded-2xl shadow-md">
           <h2 className="text-xl font-semibold mb-4">Weekly Newsletter</h2>
           <p className="mb-4 text-sm sm:text-base">Get blog articles and offers via email.</p>
           <form className="flex items-center relative">
