@@ -1,5 +1,6 @@
 import React from 'react';
 import { CiMail } from "react-icons/ci";
+import assets from '../assets/assets'
 
 const Footer = () => {
   return (
@@ -61,12 +62,12 @@ const Footer = () => {
       </div>
 
       {/* Footer Bottom Section */}
-      <div className="mt-8 border-t border-gray-300 pt-4 text-center text-sm sm:text-base">
-        <img/>
-        <div>
-            <p></p>
-            <p></p>
-            <p></p>
+      <div className="mt-8 flex justify-between items-center border-t border-gray-300 pt-4 text-center text-sm sm:text-base">
+        <img src={assets.CopyrightInfo} placeholder='CopyrightInfo' />
+        <div className='flex'>
+            <p className='text-lg border-r px-2'>Terms of Use</p>
+            <p className='text-lg border-r px-2'>Privacy Policy</p>
+            <p className='text-lg px-2'>Cookie Policy</p>
         </div>
       </div>
     </footer>
