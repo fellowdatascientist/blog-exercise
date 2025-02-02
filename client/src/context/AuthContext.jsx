@@ -1,19 +1,20 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 
-const AuthContext = createContext()
+const AuthContext = createContext(null); // Providing a default value
 
-const AuthProvider = ({children})=>{
-    const [isAuth, setIsAuth] = useState(false)
+const AuthProvider = ({ children }) => {
+  const [isAuth, setIsAuth] = useState(false);
 
-    const data = {
-        isAuth,
-        setIsAuth
-    }
-    return(
-        <AuthContext.Provider value={data}>
-            {children}
-        </AuthContext.Provider>
-    )
-}
+  const data = {
+    isAuth,
+    setIsAuth,
+  };
 
-export default AuthProvider;
+  return (
+    <AuthContext.Provider value={data}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
+
+export { AuthProvider, AuthContext };

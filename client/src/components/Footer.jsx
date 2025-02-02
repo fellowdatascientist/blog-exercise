@@ -50,7 +50,7 @@ const Footer = () => {
               className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
-            <CiMail className='absolute right-3 text-gray-500 w-6 h-6'/>
+            <CiMail className='absolute right-3 text-gray-500 w-6 h-6' />
           </form>
           <button
             type="submit"

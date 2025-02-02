@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { IoSearchSharp } from "react-icons/io5";
-import { GiHamburgerMenu } from "react-icons/gi"; // Mobile menu icon
+import { GiHamburgerMenu } from "react-icons/gi"; 
 import assets from '../assets/assets';
+import { ThemeContext } from '../context/ThemeContext';
 
 const Navbar = () => {
     const [searchTerm, setSearchTerm] = useState('');
-    const [menuOpen, setMenuOpen] = useState(false); // State for mobile menu
+    const [menuOpen, setMenuOpen] = useState(false);
+    const { theme } = useContext(ThemeContext);
 
     const handleSearch = (e) => {
         e.preventDefault();
@@ -16,7 +18,7 @@ const Navbar = () => {
     return (
         <div className='w-full h-20 flex items-center justify-between px-6 md:px-10 bg-white '>
             {/* Logo */}
-            <img src={assets.logo} alt="Logo" className="h-10" />
+            <img src={theme === 'light' ? assets.Logo:assets.LogoDark} alt="Logo" className="h-10" />
 
             {/* Mobile Menu Button */}
             <button 

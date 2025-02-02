@@ -1,5 +1,6 @@
-import BlogProvider from "./BlogContext";
-import ThemeProvider from "./ThemeContext";
+import { BlogProvider } from "./BlogContext";
+import { ThemeProvider } from "./ThemeContext";
+import { AuthProvider } from "./AuthContext";
 
 const ContextProvider = ({ children }) => {
     return (
