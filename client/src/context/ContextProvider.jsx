@@ -3,15 +3,13 @@ import { ThemeProvider } from "./ThemeContext";
 import { AuthProvider } from "./AuthContext";
 
 const ContextProvider = ({ children }) => {
-    return (
-        <ThemeProvider>
-            <AuthProvider>
-                <BlogProvider>
-                    {children}
-                </BlogProvider>
-            </AuthProvider>
-        </ThemeProvider>
-    );
+  return (
+    <AuthProvider>
+      <ThemeProvider>
+        <BlogProvider>{children}</BlogProvider>
+      </ThemeProvider>
+    </AuthProvider>
+  );
 };
 
 export default ContextProvider;

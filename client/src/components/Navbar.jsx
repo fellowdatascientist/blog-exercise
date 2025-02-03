@@ -7,13 +7,15 @@ import { IoLogIn } from "react-icons/io5";
 import { RiAccountPinCircleLine } from "react-icons/ri";
 import assets from "../assets/assets";
 import { ThemeContext } from "../context/ThemeContext";
+import { AuthContext } from "../context/AuthContext";
 
 const Navbar = () => {
     const [searchTerm, setSearchTerm] = useState("");
     const [menuOpen, setMenuOpen] = useState(false);
     const [searchOpen, setSearchOpen] = useState(false);
     const { theme, toggleTheme } = useContext(ThemeContext);
-    const [isLogin, setIsLogin] = useState(true);
+    const {token} = useContext(AuthContext)
+    
 
     const handleSearch = (e) => {
         e.preventDefault();
@@ -90,15 +92,15 @@ const Navbar = () => {
                     <NavLink className=" text-lg" to="/contact" onClick={() => setMenuOpen(false)}>Contact</NavLink>
 
                     {/* Login / Account in Mobile Menu */}
-                    <NavLink to="/login" className="text-xl mt-4 text-gray-700 dark:text-white">
-                        {isLogin ? (<div className="flex gap-2">
+                    <div className="text-xl mt-4 text-gray-700 dark:text-white">
+                        {token ? (<NavLink to={"/profile"} className="flex gap-2">
                             <RiAccountPinCircleLine className="w-6 h-7" /><p>Account</p>
-                        </div>
-                        ) : (<div className="flex gap-2">
+                        </NavLink>
+                        ) : (<NavLink to={"/login"} className="flex gap-2">
                             <IoLogIn className="w-6 h-7" /><p>Log In</p>
-                        </div>
+                        </NavLink>
                         )}
-                    </NavLink>
+                    </div>
                 </nav>
             </div>
 
@@ -129,13 +131,13 @@ const Navbar = () => {
             {/* Login Icon and Theme Toggle (Desktop Only) */}
             <div className="hidden md:flex items-center space-x-4">
                 {/* Login Icon */}
-                <NavLink to="/login" className="text-gray-700 text-xl dark:text-white">
-                    {isLogin ? (
-                        <RiAccountPinCircleLine className="w-6 h-7" />
+                <div className="text-gray-700 text-xl dark:text-white">
+                    {token ? (
+                        <NavLink to="/profile"><RiAccountPinCircleLine className="w-6 h-7" /></NavLink>
                     ) : (
-                        <IoLogIn className="w-6 h-7" />
+                        <NavLink to='/login'><IoLogIn className="w-6 h-7" /></NavLink>
                     )}
-                </NavLink>
+                </div>
 
                 {/* Theme Toggle */}
                 <label className="inline-flex items-center cursor-pointer">

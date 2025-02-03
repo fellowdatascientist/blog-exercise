@@ -50,7 +50,7 @@ const LoginPage = () => {
           <input
             ref={nameRef}
             type="text"
-            className="w-full px-4 py-3 border border-gray-800 dark:border-white rounded-md focus:outline-none focus:ring-2 focus:ring-gray-800 dark:focus:ring-white"
+            className="w-full px-4 py-3 border border-gray-800 dark:border-white rounded-md focus:outline-none focus:ring-2 focus:ring-gray-800 dark:focus:ring-white dark:text-black"
             placeholder="Full Name"
             required
           />
@@ -59,7 +59,7 @@ const LoginPage = () => {
         <input
           ref={emailRef}
           type="email"
-          className="w-full px-4 py-3 border border-gray-800 dark:border-white rounded-md focus:outline-none focus:ring-2 focus:ring-gray-800 dark:focus:ring-white"
+          className="w-full px-4 py-3 border border-gray-800 dark:border-white rounded-md focus:outline-none focus:ring-2 focus:ring-gray-800 dark:focus:ring-white dark:text-black"
           placeholder="Email"
           required
         />
@@ -69,7 +69,7 @@ const LoginPage = () => {
           <input
             ref={passwordRef}
             type="password"
-            className="w-full px-4 py-3 border border-gray-800 dark:border-white rounded-md focus:outline-none focus:ring-2 focus:ring-gray-800 dark:focus:ring-white"
+            className="w-full px-4 py-3 border border-gray-800 dark:border-white rounded-md focus:outline-none focus:ring-2 focus:ring-gray-800 dark:focus:ring-white dark:text-black"
             placeholder="Password"
             required
           />

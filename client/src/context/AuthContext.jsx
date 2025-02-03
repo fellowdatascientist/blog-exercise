@@ -8,7 +8,7 @@ const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
   
   const [errorMSG, setErrorMSG] = useState('')
-  const [token , setToken] = useState(localStorage.getItem('token') || '')
+  const [token , setToken] = useState(localStorage.getItem('token') || null)
 
   useEffect(()=>{
     if(!token){
