@@ -2,7 +2,7 @@ const User = require('../modules/user.module')
 const validateEmail = require('../utils/emailValidation.utils')
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const genarateToken = require('../utils/tokenGenerate.utils');
+const generateToken = require('../utils/tokenGenerate.utils');
 
 const register = async (req, res) => {
     try {
@@ -16,7 +16,7 @@ const register = async (req, res) => {
 
         if (existEmail) return res.status(400).json({ message: "Email already exists" })
             
-        if (password.length <= 8) {
+        if (password.length < 8) {
             return res.status(400).json({ message: "Password must be at least 8 characters" })
         }
         const hashpassword = await bcrypt.hash(password, 10)
@@ -44,23 +44,24 @@ const register = async (req, res) => {
 const login = async (req, res) => {
     try {
         const { email, password } = req.body
-
+        
         const user = await User.findOne({ email })
-
+        
         if (!user) return res.status(400).json({ message: "Invalid email or password" })
-
+ 
         const isMatch = await bcrypt.compare(password, user.password)
-
+        
         if (!isMatch) return res.status(400).json({ message: "Invalid email or password" })
-        const token = genarateToken(res, user._id)
+        const token = generateToken(res, user._id)
         res.json({
             message: "Logged in successfully",
             token
         });
     } catch (error) {
-        console.error("Error Login user ", error.message)
+        console.error("Error Login user ", error.message);
+        res.status(500).json({ message: "Error logging in user", error: error.message });
     }
-}
+} 
 
 const logout = async (req, res) => {
     try {

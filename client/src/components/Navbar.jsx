@@ -13,7 +13,7 @@ const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
     const [searchOpen, setSearchOpen] = useState(false);
     const { theme, toggleTheme } = useContext(ThemeContext);
-    const [isLogin,setIsLogin] = useState(true) 
+    const [isLogin, setIsLogin] = useState(true);
 
     const handleSearch = (e) => {
         e.preventDefault();
@@ -23,22 +23,29 @@ const Navbar = () => {
     return (
         <div className="w-full h-20 flex items-center justify-between bg-white relative dark:bg-[#181A2A]">
             {/* Logo */}
-            <NavLink to={"/"}><img 
-                src={theme === "light" ? assets.Logo : assets.LogoDark}
-                alt="Logo"
-                className="h-10"
-            /></NavLink>
+            <NavLink to={"/"}>
+                <img
+                    src={theme === "light" ? assets.Logo : assets.LogoDark}
+                    alt="Logo"
+                    className="h-10"
+                />
+            </NavLink>
 
             {/* Mobile Controls */}
             <div className="flex items-center md:hidden">
+                {/* Theme Toggle */}
+                <label className="inline-flex items-center cursor-pointer mr-4 ">
+                    <input type="checkbox" className="sr-only peer" onChange={toggleTheme} />
+                    <div className="relative w-11 h-6 bg-gray-950 rounded-full peer peer-checked:bg-gray-400 after:absolute after:top-[2px] after:start-[2px] after:bg-white after:h-5 after:w-5 after:rounded-full after:transition-all peer-checked:after:translate-x-full"></div>
+                </label>
                 {/* Search Icon */}
-                <button onClick={() => setSearchOpen(!searchOpen)} className="text-gray-700 text-2xl mr-4">
+                <button onClick={() => setSearchOpen(!searchOpen)} className="text-2xl mr-4 text-gray-700 dark:text-white ">
                     <IoSearchSharp />
                 </button>
 
                 {/* Hamburger Menu */}
                 <button
-                    className="text-gray-700 text-2xl"
+                    className="text-gray-700 text-2xl dark:text-white"
                     onClick={() => setMenuOpen(!menuOpen)}
                 >
                     <GiHamburgerMenu />
@@ -64,24 +71,34 @@ const Navbar = () => {
 
             {/* Mobile Navigation (Sliding Menu) */}
             <div
-                className={`z-10 fixed top-0 right-0 h-full w-64 bg-white shadow-lg transform transition-transform duration-300 ease-in-out ${menuOpen ? "translate-x-0" : "translate-x-full"
+                className={`z-10 fixed top-0 right-0 h-full w-64 bg-white dark:bg-gray-800 shadow-lg transform transition-transform duration-300 ease-in-out ${menuOpen ? "translate-x-0" : "translate-x-full"
                     } md:hidden`}
             >
                 <button
-                    className="absolute top-4 right-4 text-gray-700 text-2xl"
+                    className="absolute top-4 right-4 text-gray-700 text-2xl dark:text-white"
                     onClick={() => setMenuOpen(false)}
                 >
                     <IoCloseOutline
                         className={`text-3xl transition-transform duration-300 ease-in-out ${menuOpen ? "rotate-180" : "rotate-0"}`}
                     />
-
                 </button>
-                <nav className="flex flex-col items-start space-y-4 p-6 mt-10">
-                    <NavLink className="text-gray-700 text-lg" to="/" onClick={() => setMenuOpen(false)}>Home</NavLink>
-                    <NavLink className="text-gray-700 text-lg" to="/blog" onClick={() => setMenuOpen(false)}>Blog</NavLink>
-                    <NavLink className="text-gray-700 text-lg" to="/post" onClick={() => setMenuOpen(false)}>Single Post</NavLink>
-                    <NavLink className="text-gray-700 text-lg" to="/pages" onClick={() => setMenuOpen(false)}>Pages</NavLink>
-                    <NavLink className="text-gray-700 text-lg" to="/contact" onClick={() => setMenuOpen(false)}>Contact</NavLink>
+                <nav className="flex flex-col items-start space-y-4 p-6 mt-10 text-gray-700 dark:text-white">
+                    <NavLink className=" text-lg" to="/" onClick={() => setMenuOpen(false)}>Home</NavLink>
+                    <NavLink className=" text-lg" to="/blog" onClick={() => setMenuOpen(false)}>Blog</NavLink>
+                    <NavLink className=" text-lg" to="/post" onClick={() => setMenuOpen(false)}>Single Post</NavLink>
+                    <NavLink className=" text-lg" to="/pages" onClick={() => setMenuOpen(false)}>Pages</NavLink>
+                    <NavLink className=" text-lg" to="/contact" onClick={() => setMenuOpen(false)}>Contact</NavLink>
+
+                    {/* Login / Account in Mobile Menu */}
+                    <NavLink to="/login" className="text-xl mt-4 text-gray-700 dark:text-white">
+                        {isLogin ? (<div className="flex gap-2">
+                            <RiAccountPinCircleLine className="w-6 h-7" /><p>Account</p>
+                        </div>
+                        ) : (<div className="flex gap-2">
+                            <IoLogIn className="w-6 h-7" /><p>Log In</p>
+                        </div>
+                        )}
+                    </NavLink>
                 </nav>
             </div>
 
@@ -109,15 +126,19 @@ const Navbar = () => {
                 </form>
             </div>
 
-            {/* Login Icon and Theme Toggle */}
-            <div className="flex items-center space-x-4">
+            {/* Login Icon and Theme Toggle (Desktop Only) */}
+            <div className="hidden md:flex items-center space-x-4">
                 {/* Login Icon */}
                 <NavLink to="/login" className="text-gray-700 text-xl dark:text-white">
-                    {isLogin?<RiAccountPinCircleLine className="w-6 h-6"/>:<IoLogIn className="w-6 h-6" />}
-                </NavLink>  
+                    {isLogin ? (
+                        <RiAccountPinCircleLine className="w-6 h-7" />
+                    ) : (
+                        <IoLogIn className="w-6 h-7" />
+                    )}
+                </NavLink>
 
                 {/* Theme Toggle */}
-                <label className="hidden md:inline-flex items-center cursor-pointer">
+                <label className="inline-flex items-center cursor-pointer">
                     <input type="checkbox" className="sr-only peer" onChange={toggleTheme} />
                     <div className="relative w-11 h-6 bg-gray-950 rounded-full peer peer-checked:bg-gray-400 after:absolute after:top-[2px] after:start-[2px] after:bg-white after:h-5 after:w-5 after:rounded-full after:transition-all peer-checked:after:translate-x-full"></div>
                 </label>

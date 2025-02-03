@@ -9,6 +9,8 @@ import Home from './pages/Home'
 import LoginPage from './pages/LoginPage'
 import ContextProvider from './context/ContextProvider'
 import NotFound from './pages/NotFound'
+export const backendUrl = import.meta.env.VITE_BACKEND_URL;
+import {Toaster} from 'react-hot-toast'
 
 function App() {
   const Router = createBrowserRouter(
@@ -20,13 +22,17 @@ function App() {
         <Route path='post/:id' element={<SinglePostLayout />} />
         <Route path='pages' element={<PagesLayout />} />
         <Route path='contact' element={<ContactLayout />} />
-        <Route path='*' element={<NotFound/>}/>
+        <Route path='*' element={<NotFound />} />
       </Route>
     )
   )
 
   return (
     <ContextProvider>
+      <Toaster
+        position="top-right"
+        reverseOrder={true}
+      />
       <RouterProvider router={Router} />
     </ContextProvider>
   )
