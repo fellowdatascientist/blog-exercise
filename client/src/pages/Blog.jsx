@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import assets from '../assets/assets'; // Make sure to import assets if not already
+import BlogHeroSession from '../components/BlogHeroSession';
 
 const Blog = () => {
   const allPosts = [
@@ -120,7 +121,20 @@ const Blog = () => {
     ]);
   };
 
-  return (
+  return (<>
+   {/* Page Title & Breadcrumb */}
+   <div className="w-full h-auto flex flex-col justify-center items-center py-6">
+        <h1 className="text-xl sm:text-2xl font-bold text-black dark:text-white">Page Title</h1>
+
+        {/* Breadcrumb Section */}
+        <div className="flex items-center gap-2 text-sm sm:text-base mt-2">
+          <p className="text-gray-500 dark:text-white border-r-2 border-gray-400 pr-2">Home</p>
+          <p className="text-gray-500 dark:text-white">Link One</p>
+        </div>
+      </div>
+
+      {/* Hero Section */}
+      <BlogHeroSession />
     <div className="w-full h-auto pb-5 dark:text-white ">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 ">
         {visiblePosts.map((item, index) => (
@@ -159,10 +173,11 @@ const Blog = () => {
           onClick={loadMorePosts}
           className="w-fit px-6 py-3 border border-gray-300 text-gray-500 font-medium rounded-lg text-sm sm:text-base hover:bg-gray-100 transition-all"
         >
-          More Posts
+          Load More
         </button>
       </div>
     </div>
+    </>
   );
 };
 
