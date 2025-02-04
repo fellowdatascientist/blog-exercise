@@ -153,14 +153,14 @@ const Navbar = () => {
                 >
                     Contact
                 </NavLink>
-                <NavLink
+                {token?<NavLink
                     className={({ isActive }) =>
                         `text-sm md:text-base ${isActive ? 'text-black dark:text-red-600 font-semibold' : ''}`
                     }
                     to="/create-post"
                 >
                     Create Post
-                </NavLink>
+                </NavLink>:''}
             </nav>
 
 

@@ -26,7 +26,7 @@ function App() {
     createRoutesFromElements(
       <Route path="/" element={<RootLayout />}>
         <Route index element={<Home />} />
-        <Route path="create-post" element={<CreatePost/>}/>
+        {token?<Route path="create-post" element={<CreatePost/>}/>:""}
         <Route path="login" element={<LoginPage />} />
         <Route path="blog" element={<BlogLayout />} />
         <Route path="post/:id" element={<SinglePostLayout />} />
