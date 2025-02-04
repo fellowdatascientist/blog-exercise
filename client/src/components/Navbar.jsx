@@ -1,5 +1,5 @@
-import React, { useContext, useState } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { Navigate, NavLink, useNavigate } from "react-router-dom";
 import { IoSearchSharp } from "react-icons/io5";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoCloseOutline } from "react-icons/io5";
@@ -14,9 +14,15 @@ const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
     const [searchOpen, setSearchOpen] = useState(false);
     const { theme, toggleTheme } = useContext(ThemeContext);
-    const {token} = useContext(AuthContext)
-    
+    const { token } = useContext(AuthContext)
+    const location = useNavigate();
+    const navigate = useNavigate()
 
+    useEffect(() => {
+        if (!token) {
+            navigate('/login', { state: { from: location.pathname } });
+        }
+    }, [token, navigate, location]);
     const handleSearch = (e) => {
         e.preventDefault();
         console.log("Searching for:", searchTerm);
@@ -59,13 +65,13 @@ const Navbar = () => {
                 <div className="absolute top-16 left-0 w-full px-6 z-10">
                     <form onSubmit={handleSearch} className="flex items-center bg-slate-100 p-2 rounded-lg">
                         <input
-                            className="w-full bg-transparent p-2 outline-none"
+                            className="w-full bg-transparent p-2 outline-none border"
                             placeholder="Search..."
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
                         />
                         <button type="submit">
-                            <IoSearchSharp className="text-gray-500" size={20} />
+                            <IoSearchSharp className="text-gray-500" size={20} onClick={() => setSearchOpen(!searchOpen)} />
                         </button>
                     </form>
                 </div>
@@ -90,13 +96,14 @@ const Navbar = () => {
                     <NavLink className=" text-lg" to="/post" onClick={() => setMenuOpen(false)}>Single Post</NavLink>
                     <NavLink className=" text-lg" to="/pages" onClick={() => setMenuOpen(false)}>Pages</NavLink>
                     <NavLink className=" text-lg" to="/contact" onClick={() => setMenuOpen(false)}>Contact</NavLink>
+                    <NavLink className=" text-lg" to="/create-post" onClick={() => setMenuOpen(false)}>Create Post</NavLink>
 
                     {/* Login / Account in Mobile Menu */}
                     <div className="text-xl mt-4 text-gray-700 dark:text-white">
-                        {token ? (<NavLink to={"/profile"} className="flex gap-2">
+                        {token ? (<NavLink to={"/profile"} className="flex gap-2" onClick={() => setMenuOpen(false)}>
                             <RiAccountPinCircleLine className="w-6 h-7" /><p>Account</p>
                         </NavLink>
-                        ) : (<NavLink to={"/login"} className="flex gap-2">
+                        ) : (<NavLink to={"/login"} className="flex gap-2" onClick={() => setMenuOpen(false)}>
                             <IoLogIn className="w-6 h-7" /><p>Log In</p>
                         </NavLink>
                         )}
@@ -105,16 +112,60 @@ const Navbar = () => {
             </div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex space-x-9 dark:text-white text-gray-500">
-                <NavLink className="" to="/">Home</NavLink>
-                <NavLink className="" to="/blog">Blog</NavLink>
-                <NavLink className="" to="/post">Single Post</NavLink>
-                <NavLink className="" to="/pages">Pages</NavLink>
-                <NavLink className="" to="/contact">Contact</NavLink>
+            <nav className="hidden md:flex space-x-3 md:space-x-10 dark:text-white text-gray-500">
+                <NavLink
+                    className={({ isActive }) =>
+                        `text-sm md:text-base ${isActive ? 'text-black dark:text-red-600 font-semibold' : ''}`
+                    }
+                    to="/"
+                >
+                    Home
+                </NavLink>
+                <NavLink
+                    className={({ isActive }) =>
+                        `text-sm md:text-base ${isActive ? 'text-black dark:text-red-600 font-semibold' : ''}`
+                    }
+                    to="/blog"
+                >
+                    Blog
+                </NavLink>
+                <NavLink
+                    className={({ isActive }) =>
+                        `text-sm md:text-base ${isActive ? 'text-black dark:text-red-600 font-semibold' : ''}`
+                    }
+                    to="/post"
+                >
+                    Single Post
+                </NavLink>
+                <NavLink
+                    className={({ isActive }) =>
+                        `text-sm md:text-base ${isActive ? 'text-black dark:text-red-600 font-semibold' : ''}`
+                    }
+                    to="/pages"
+                >
+                    Pages
+                </NavLink>
+                <NavLink
+                    className={({ isActive }) =>
+                        `text-sm md:text-base ${isActive ? 'text-black dark:text-red-600 font-semibold' : ''}`
+                    }
+                    to="/contact"
+                >
+                    Contact
+                </NavLink>
+                <NavLink
+                    className={({ isActive }) =>
+                        `text-sm md:text-base ${isActive ? 'text-black dark:text-red-600 font-semibold' : ''}`
+                    }
+                    to="/create-post"
+                >
+                    Create Post
+                </NavLink>
             </nav>
 
+
             {/* Desktop Search Bar */}
-            <div className="hidden md:block relative w-64">
+            <div className="hidden md:block relative sm:w-1 md:w-64">
                 <form onSubmit={handleSearch} className="flex items-center">
                     <input
                         className="bg-slate-100 h-7 w-full p-5 rounded-xl pl-5 dark:bg-[#242535] dark:text-white"

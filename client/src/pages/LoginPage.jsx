@@ -1,10 +1,14 @@
 import React, { useContext, useRef, useState } from 'react';
 import { AuthContext } from '../context/AuthContext';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
   const [currentState, setCurrentState] = useState('Login');
   const { login, SignUp, errorMSG } = useContext(AuthContext)
+  const navigate = useNavigate();
+  const location = useLocation();
 
+  const from = location.state?.form || '/';
 
   const nameRef = useRef(null);
   const emailRef = useRef(null);
@@ -21,7 +25,10 @@ const LoginPage = () => {
       const data = {
         email, password
       }
-      login(data)
+      const response = await login(data);
+      if (response) {
+        navigate(from,{replace:true});
+      }
     } else {
       const data = {
         name, email, password

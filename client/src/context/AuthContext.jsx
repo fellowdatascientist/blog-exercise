@@ -24,6 +24,7 @@ const AuthProvider = ({ children }) => {
       toast.success(res.data.message);
       setToken(res.data.token)
       localStorage.setItem('token', res.data.token)
+      return true
     } catch (error) {
       setErrorMSG(error.response?.data?.message)
       setTimeout(()=>{
