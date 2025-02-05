@@ -4,18 +4,18 @@ const createBlog = async (req, res) => {
     try {
         const { title, description, content } = req.body;
         const { _id: userId } = req.user;
-        const picture = req.file ? req.file.path : null; // Store the file path if uploaded
+        const picture = req.file ? req.file.path : null; 
 
         const newBlog = new Blog({
             title,
             description,
             content,
             userId,
-            picture // Save the uploaded image path
+            picture 
         });
 
         const savedBlog = await newBlog.save();
-        res.status(201).json(savedBlog); // Return the saved blog
+        res.status(201).json(savedBlog); 
 
     } catch (error) {
         console.error(error);
