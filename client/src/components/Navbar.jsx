@@ -93,7 +93,7 @@ const Navbar = () => {
                 <nav className="flex flex-col items-start space-y-4 p-6 mt-10 text-gray-700 dark:text-white">
                     <NavLink className=" text-lg" to="/" onClick={() => setMenuOpen(false)}>Home</NavLink>
                     <NavLink className=" text-lg" to="/blog" onClick={() => setMenuOpen(false)}>Blog</NavLink>
-                    <NavLink className=" text-lg" to="/post" onClick={() => setMenuOpen(false)}>Single Post</NavLink>
+                    <NavLink className=" text-lg" to="/blog/a" onClick={() => setMenuOpen(false)}>Single Post</NavLink>
                     <NavLink className=" text-lg" to="/pages" onClick={() => setMenuOpen(false)}>Pages</NavLink>
                     <NavLink className=" text-lg" to="/contact" onClick={() => setMenuOpen(false)}>Contact</NavLink>
                     <NavLink className=" text-lg" to="/create-post" onClick={() => setMenuOpen(false)}>Create Post</NavLink>
@@ -133,7 +133,7 @@ const Navbar = () => {
                     className={({ isActive }) =>
                         `text-sm md:text-base ${isActive ? 'text-black dark:text-red-600 font-semibold' : ''}`
                     }
-                    to="/post"
+                    to="/blog/a"
                 >
                     Single Post
                 </NavLink>

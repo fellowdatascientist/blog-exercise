@@ -3,6 +3,7 @@ import assets from '../assets/assets'; // Make sure to import assets if not alre
 import BlogHeroSession from '../components/BlogHeroSession';
 
 const Blog = () => {
+  
   const allPosts = [
     {
       thumbnail: assets.HeroBanner,

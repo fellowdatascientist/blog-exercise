@@ -12,7 +12,14 @@ const userSchema = new mongoose.Schema({
         required:true,
         unique:true
     },
-    password: String,
+    password: {
+        type:String,
+        required:true
+    },
+    profilePic:{
+        type:String,
+        default:""
+    }
 },{
     timestamps:true,
 })
