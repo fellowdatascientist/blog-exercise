@@ -29,7 +29,7 @@ const BlogHeroSession = () => {
         <div className="w-full h-auto relative flex justify-center items-center pb-14 mt-4">
             {/* Hero Image */}
             <div
-                className="w-full flex justify-start items-end h-[30rem] sm:h-[35rem] md:h-[40rem] lg:h-[45rem] rounded-xl duration-300 animate-fadeIn"
+                className="w-full flex justify-start items-end h-[25rem] sm:h-[30rem] md:h-[35rem] lg:h-[40rem] rounded-xl duration-300 animate-fadeIn"
                 style={{
                     backgroundImage: `url(${activeBlog?.picture
                         ? `${backendUrl}/${activeBlog.picture.replace(/\\/g, "/")}`
@@ -40,7 +40,7 @@ const BlogHeroSession = () => {
                     backgroundRepeat: 'no-repeat',
                 }}
             >
-                <div className="w-[70%] h-[40%] flex flex-col justify-around pl-14 pb-10 gap-1 duration-300 animate-fadeIn">
+                <div className="w-[70%] h-[40%] flex flex-col justify-around pl-14 pb-10 gap-1 duration-300 animate-fadeIn ">
                     {/* Category Badge */}
                     <p className="px-3 py-1 bg-blue-500 text-white rounded-lg w-fit text-xs sm:text-sm md:text-base font-semibold">
                         {activeBlog?.category || 'General'}
