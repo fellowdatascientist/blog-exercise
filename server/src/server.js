@@ -16,10 +16,10 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-    origin: corsAllows.origin,
+    origin: corsAllows.allOrigin,
     methods: corsAllows.methods,
     allowedHeaders: corsAllows.allowedHeaders,
-    credentials: corsAllows.credentials
+    credentials: true
 }));
 
 // Serve static files for uploaded images

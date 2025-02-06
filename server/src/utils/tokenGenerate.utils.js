@@ -12,8 +12,7 @@ const generateToken = async(res, _id) => {
         maxAge: 12 * 60 * 60 * 1000,
         secure: process.env.NODE_ENV === 'production',
         sameSite: process.env.NODE_ENV === 'production' ? "None" : "Strict",
-    });    
-    console.log(token);
+    });
     
     return token;
 }

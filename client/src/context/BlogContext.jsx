@@ -26,9 +26,6 @@ const BlogProvider = ({ children }) => {
     try {
       const { data } = await axios.post(`${backendUrl}/v1/api/blog/create-blog`, formData, {
         withCredentials: true,
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
       });
       console.log(data);
       

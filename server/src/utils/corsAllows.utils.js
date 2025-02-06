@@ -1,8 +1,11 @@
 const corsAllows = {
-    origin: process.env.CORS_ORIGIN.split(","),
-    methods: process.env.CORS_METHODS.split(","),
-    allowedHeaders: process.env.CORS_HEADERS.split(","),
-    credentials: true
-};
+    allOrigin:[
+        "http://localhost:5173",
+        "http://localhost:5174",
+        "http://localhost:5175",
+    ],
 
-module.exports = corsAllows;
+    methods:["POST","PUT","DELETE","GET"],
+    allowedHeaders:["Content-Type","Authorization","Accept"],
+}
+module.exports = corsAllows
