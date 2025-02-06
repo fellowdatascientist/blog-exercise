@@ -14,8 +14,6 @@ const AuthProvider = ({ children }) => {
     if(!token){
       console.log(token);
     }
-    console.log("after useEff",token);
-    
   },[])
 
   const handleLogout = ()=>{
@@ -25,7 +23,7 @@ const AuthProvider = ({ children }) => {
   
   const login = async(data) => {
     try {
-      const res = await axios.post(`${backendUrl}/v1/api/auth/login`,data)
+      const res = await axios.post(`${backendUrl}/v1/api/auth/login`,data,{withCredentials:true})
       toast.success(res.data.message);
       setToken(res.data.token)
       localStorage.setItem('token', res.data.token)
@@ -40,7 +38,7 @@ const AuthProvider = ({ children }) => {
   }
   const SignUp = async(data) => {
   try {
-    const res = await axios.post(`${backendUrl}/v1/api/auth/register`,data)
+    const res = await axios.post(`${backendUrl}/v1/api/auth/register`,data,{withCredentials:true})
     toast.success(res.data.message);
   } catch (error) {
     setErrorMSG(error.response?.data?.message)

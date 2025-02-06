@@ -54,7 +54,8 @@ const CreatePost = () => {
     formData.append('content', postData.content);
     formData.append('picture', image);
     const blog = await createBlog(formData)
-    navigate(`/blog/${blog.blog._id}`);
+    console.log(blog);
+    navigate(`/blog/${blog._id}`);
   };
 
   // ReactQuill toolbar configuration

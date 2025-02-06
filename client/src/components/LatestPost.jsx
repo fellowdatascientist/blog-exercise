@@ -5,7 +5,7 @@ import { backendUrl } from '../App';
 import { useNavigate } from 'react-router-dom';
 
 const LatestPost = () => {
-  const { blogData } = useContext(BlogContext);
+  const { blogData,getBlog } = useContext(BlogContext);
   const navigate = useNavigate()
 
   return (
@@ -13,7 +13,7 @@ const LatestPost = () => {
       <h2 className="text-2xl sm:text-3xl font-bold mb-6">Latest Post</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 ">
         {blogData?.map((item, index) => (
-          <div key={index} className="border border-gray-200 p-6 bg-white dark:bg-[#181A2A] dark:border-[#242535] rounded-xl shadow-lg overflow-hidden transition-all hover:shadow-xl hover:scale-105">
+          <div key={index} onClick={()=>navigate(`/blog/${item._id}`)} className="border border-gray-200 p-6 bg-white dark:bg-[#181A2A] dark:border-[#242535] rounded-xl shadow-lg overflow-hidden transition-all hover:shadow-xl hover:scale-105">
             {/* Thumbnail */}
             <div
               className="w-full h-56 sm:h-64 lg:h-72 bg-cover bg-center rounded-lg"
