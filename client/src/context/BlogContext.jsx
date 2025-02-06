@@ -1,13 +1,15 @@
 import { createContext, useEffect, useState } from "react";
 import axios from "axios";
 import { backendUrl } from '../App'
+import toast from "react-hot-toast";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const BlogContext = createContext(null); // Default value
 
 const BlogProvider = ({ children }) => {
   const [comment, setComment] = useState([]);
   const [comments, setComments] = useState([]);
-
+  const [loading, setLoading] = useState(false);
   const [blogData, setBlogData] = useState([]);
 
   const getAllBlog = async () => {
@@ -19,12 +21,33 @@ const BlogProvider = ({ children }) => {
       console.error(error);
     }
   }
+
+  const createBlog = async (formData) =>{
+    try {
+      const { data } = await axios.post(`${backendUrl}/v1/api/blog/create-blog`, formData, {
+        withCredentials: true,
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      console.log(data);
+      
+      if (data.status === 201) {
+        toast.success(data.message);
+        return data
+      }
+    } catch (error) {
+      toast.error(error.response?.data?.message || 'Failed to create post');
+    } finally {
+      setLoading(false);
+    }
+  }
   useEffect(() => {
     getAllBlog();
   }, [])
 
   const data = {
-    comment, setComment, blogData, setBlogData, comments, setComments, getAllBlog
+    comment, setComment, blogData, setBlogData, comments, setComments, getAllBlog, loading, setLoading ,createBlog
   }
 
   return (

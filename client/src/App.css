@@ -1,0 +1,23 @@
+/* Dark Mode Custom Styles for ReactQuill */
+.dark .ql-toolbar {
+    background-color: #333; /* Dark background */
+    color: white; /* Text color */
+  }
+  
+  /* Change button icons to white in dark mode */
+  .dark .ql-toolbar .ql-stroke {
+    stroke: white !important;
+  }
+  
+  /* Change button text to white in dark mode */
+  .dark .ql-toolbar .ql-picker-label,
+  .dark .ql-toolbar .ql-picker-item,
+  .dark .ql-toolbar .ql-format-group {
+    color: white !important;
+  }
+  
+  /* Change toolbar button backgrounds */
+  .dark .ql-toolbar .ql-active {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+  }
+  

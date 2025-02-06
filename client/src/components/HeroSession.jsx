@@ -20,8 +20,6 @@ const HeroSession = () => {
 
   useEffect(() => {
     AOS.init({ duration: 1000 });
-    console.log(activeBlog);
-    
   }, [activeBlog]);
 
   return (

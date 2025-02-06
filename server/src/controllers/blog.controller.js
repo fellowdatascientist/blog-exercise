@@ -16,7 +16,10 @@ const createBlog = async (req, res) => {
         });
 
         const savedBlog = await newBlog.save();
-        res.status(201).json(savedBlog); 
+        res.status(201).json({
+            message: "Blog created successfully",
+            blog: savedBlog
+        }); 
 
     } catch (error) {
         console.error(error);

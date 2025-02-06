@@ -20,8 +20,8 @@ import { AuthContext } from "./context/AuthContext";
 import CreatePost from "./pages/CreatePost";
 import Blog from "./pages/Blog";
 import SinglePage from "./pages/SinglePage";
-import AOS from "aos";
 import "aos/dist/aos.css";
+import 'react-quill/dist/quill.snow.css';
 
 
 function App() {
