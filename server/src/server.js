@@ -8,18 +8,19 @@ const blogRouter = require('./routes/blog.route');
 const commentRouter = require('./routes/comment.route');
 const connectDB = require('./config/connectionDB');
 const corsAllows = require('./utils/corsAllows.utils');
+const { log } = require('console');
 
 const app = express();
 
 // Middleware setup
 app.use(express.json());
+app.use(cookieParser());
 app.use(cors({
     origin: corsAllows.origin,
     methods: corsAllows.methods,
     allowedHeaders: corsAllows.allowedHeaders,
     credentials: corsAllows.credentials
 }));
-app.use(cookieParser());
 
 // Serve static files for uploaded images
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')));

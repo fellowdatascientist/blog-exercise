@@ -2,13 +2,12 @@ const Blog = require("../modules/blog.module");
 
 const createBlog = async (req, res) => {
     try {
-        const { title, description, content, category } = req.body;
+        const { title, content, category, } = req.body;
         const { _id: userId } = req.user;
         const picture = req.file ? req.file.path : null; 
 
         const newBlog = new Blog({
             title,
-            description,
             content,
             userId,
             picture,

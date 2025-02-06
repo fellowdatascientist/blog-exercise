@@ -52,7 +52,7 @@ const login = async (req, res) => {
         const isMatch = await bcrypt.compare(password, user.password)
         
         if (!isMatch) return res.status(400).json({ message: "Invalid email or password" })
-        const token = generateToken(res, user._id)
+        const token = await generateToken(res, user._id)
         res.json({
             message: "Logged in successfully",
             token

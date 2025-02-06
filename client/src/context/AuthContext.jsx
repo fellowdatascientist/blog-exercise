@@ -18,6 +18,11 @@ const AuthProvider = ({ children }) => {
     
   },[])
 
+  const handleLogout = ()=>{
+    localStorage.setItem('token', '')
+    setToken(null)
+  }
+  
   const login = async(data) => {
     try {
       const res = await axios.post(`${backendUrl}/v1/api/auth/login`,data)
@@ -47,7 +52,7 @@ const AuthProvider = ({ children }) => {
   }
 
   const data = {
-    login, SignUp, errorMSG, setErrorMSG ,token
+    login, SignUp, errorMSG, setErrorMSG ,token, handleLogout
   };
 
   return (
