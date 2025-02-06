@@ -2,7 +2,7 @@ const Blog = require("../modules/blog.module");
 
 const createBlog = async (req, res) => {
     try {
-        const { title, description, content } = req.body;
+        const { title, description, content, category } = req.body;
         const { _id: userId } = req.user;
         const picture = req.file ? req.file.path : null; 
 
@@ -11,7 +11,8 @@ const createBlog = async (req, res) => {
             description,
             content,
             userId,
-            picture 
+            picture,
+            category
         });
 
         const savedBlog = await newBlog.save();

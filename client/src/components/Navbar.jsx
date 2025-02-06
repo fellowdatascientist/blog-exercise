@@ -35,7 +35,7 @@ const Navbar = () => {
                 <img
                     src={theme === "light" ? assets.Logo : assets.LogoDark}
                     alt="Logo"
-                    className="h-10"
+                    className="h-8 lg:h-10"
                 />
             </NavLink>
 
@@ -112,10 +112,10 @@ const Navbar = () => {
             </div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex space-x-3 md:space-x-10 dark:text-white text-gray-500">
+            <nav className="hidden md:flex md:space-x-3 lg:space-x-10 dark:text-white text-gray-500">
                 <NavLink
                     className={({ isActive }) =>
-                        `text-sm md:text-base ${isActive ? 'text-black dark:text-red-600 font-semibold' : ''}`
+                        `md:text-sm lg:text-base ${isActive ? 'text-black dark:text-red-600 font-semibold' : ''}`
                     }
                     to="/"
                 >
@@ -123,7 +123,7 @@ const Navbar = () => {
                 </NavLink>
                 <NavLink
                     className={({ isActive }) =>
-                        `text-sm md:text-base ${isActive ? 'text-black dark:text-red-600 font-semibold' : ''}`
+                        `md:text-sm lg:text-base ${isActive ? 'text-black dark:text-red-600 font-semibold' : ''}`
                     }
                     to="/blog"
                 >
@@ -131,7 +131,7 @@ const Navbar = () => {
                 </NavLink>
                 <NavLink
                     className={({ isActive }) =>
-                        `text-sm md:text-base ${isActive ? 'text-black dark:text-red-600 font-semibold' : ''}`
+                        `md:text-sm lg:text-base ${isActive ? 'text-black dark:text-red-600 font-semibold' : ''}`
                     }
                     to="/blog/a"
                 >
@@ -139,7 +139,7 @@ const Navbar = () => {
                 </NavLink>
                 <NavLink
                     className={({ isActive }) =>
-                        `text-sm md:text-base ${isActive ? 'text-black dark:text-red-600 font-semibold' : ''}`
+                        `md:text-sm lg:text-base ${isActive ? 'text-black dark:text-red-600 font-semibold' : ''}`
                     }
                     to="/pages"
                 >
@@ -147,7 +147,7 @@ const Navbar = () => {
                 </NavLink>
                 <NavLink
                     className={({ isActive }) =>
-                        `text-sm md:text-base ${isActive ? 'text-black dark:text-red-600 font-semibold' : ''}`
+                        `md:text-sm lg:text-base ${isActive ? 'text-black dark:text-red-600 font-semibold' : ''}`
                     }
                     to="/contact"
                 >
@@ -155,7 +155,7 @@ const Navbar = () => {
                 </NavLink>
                 {token?<NavLink
                     className={({ isActive }) =>
-                        `text-sm md:text-base ${isActive ? 'text-black dark:text-red-600 font-semibold' : ''}`
+                        `md:text-sm lg:text-base ${isActive ? 'text-black dark:text-red-600 font-semibold' : ''}`
                     }
                     to="/create-post"
                 >
@@ -165,7 +165,7 @@ const Navbar = () => {
 
 
             {/* Desktop Search Bar */}
-            <div className="hidden md:block relative sm:w-1 md:w-64">
+            <div className="hidden md:block relative sm:w-1 md:w-24 lg:w-64">
                 <form onSubmit={handleSearch} className="flex items-center">
                     <input
                         className="bg-slate-100 h-7 w-full p-5 rounded-xl pl-5 dark:bg-[#242535] dark:text-white"

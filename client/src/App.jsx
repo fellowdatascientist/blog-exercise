@@ -20,6 +20,9 @@ import { AuthContext } from "./context/AuthContext";
 import CreatePost from "./pages/CreatePost";
 import Blog from "./pages/Blog";
 import SinglePage from "./pages/SinglePage";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 
 function App() {
   const { token } = useContext(AuthContext)
