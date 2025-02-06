@@ -54,7 +54,6 @@ const CreatePost = () => {
     formData.append('content', postData.content);
     formData.append('picture', image);
     const blog = await createBlog(formData)
-    console.log(blog);
     navigate(`/blog/${blog._id}`);
   };
 

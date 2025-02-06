@@ -43,6 +43,9 @@ const Navbar = () => {
                 <NavLink to="/blog" className={({ isActive }) => `md:text-sm lg:text-base ${isActive ? 'text-black dark:text-red-600 font-semibold' : ''}`}>
                     Blog
                 </NavLink>
+                <NavLink to="/blog/single Page" className={({ isActive }) => `md:text-sm lg:text-base ${isActive ? 'text-black dark:text-red-600 font-semibold' : ''}`}>
+                    Single Post
+                </NavLink>
                 <NavLink to="/pages" className={({ isActive }) => `md:text-sm lg:text-base ${isActive ? 'text-black dark:text-red-600 font-semibold' : ''}`}>
                     Pages
                 </NavLink>

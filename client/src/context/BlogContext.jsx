@@ -22,8 +22,8 @@ const BlogProvider = ({ children }) => {
   const getBlog = async(id)=>{
     try {
       const response = await axios.get(`${backendUrl}/v1/api/blog/get-blog/${id}`)
-      console.log(response.data);
-       return  response.data.blog;
+      console.log(response?.data);
+      return response?.data;
     } catch (error) {
       console.error(error);
     }
