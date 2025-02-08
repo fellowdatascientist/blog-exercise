@@ -25,7 +25,7 @@ const Navbar = () => {
     }, [token, navigate]);
 
     return (
-        <div className="w-full h-20 flex items-center justify-between bg-white relative dark:bg-[#181A2A] px-5 z-50">
+        <div className="w-full h-20 flex items-center justify-between bg-white relative dark:bg-[#181A2A] px-5 z-10">
             {/* Logo */}
             <NavLink to="/">
                 <img

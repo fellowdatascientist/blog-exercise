@@ -63,7 +63,7 @@ const SinglePage = () => {
             </div>
 
             {/* Blog Banner */}
-            <img src={`${blog?.picture? `${backendUrl}/${blog?.picture?.replace(/\\/g, "/")}` : assets?.HeroBanner}`} alt="Blog Hero Banner" className='w-full h-[35rem] max-h-[42rem] object-cover rounded-lg shadow-md' />
+            <img src={`${blog?.picture? `${backendUrl}/${blog?.picture?.replace(/\\/g, "/")}` : assets?.HeroBanner}`} alt="Blog Hero Banner" className='w-full h-[33rem] max-h-[42rem] object-cover rounded-lg shadow-md' />
 
             {/* Blog Content */}
             <div className='flex flex-col w-full mx-auto gap-5 text-justify dark:text-white'>

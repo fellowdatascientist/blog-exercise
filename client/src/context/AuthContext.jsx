@@ -16,6 +16,15 @@ const AuthProvider = ({ children }) => {
     }
   },[])
 
+  const fetchAuthor = async () => {
+    try {
+      const response = await axios.get(`${backendUrl}/api/auth/author`, {withCredentials:true})
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   const handleLogout = ()=>{
     localStorage.setItem('token', '')
     setToken(null)
@@ -50,7 +59,7 @@ const AuthProvider = ({ children }) => {
   }
 
   const data = {
-    login, SignUp, errorMSG, setErrorMSG ,token, handleLogout
+    login, SignUp, errorMSG, setErrorMSG ,token, handleLogout, fetchAuthor
   };
 
   return (

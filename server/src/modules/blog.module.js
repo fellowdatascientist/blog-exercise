@@ -15,7 +15,7 @@ const blogSchema = new mongoose.Schema({
         required: true
     },
     userId: {
-        type: String,
+        type: String, 
         ref: "User",
         required: true
     },
@@ -36,7 +36,7 @@ const blogSchema = new mongoose.Schema({
         default: ""
     },
     tags: {
-        type: Array,
+        type: [String], 
         default: []
     },
     likes: {
@@ -44,10 +44,16 @@ const blogSchema = new mongoose.Schema({
         default: 0
     },
     comments: {
-        type: Array,
+        type: [
+            {
+                userId: { type: String, ref: "User" }, 
+                text: String,
+                createdAt: { type: Date, default: Date.now }
+            }
+        ],
         default: []
     }
-});
+}, { timestamps: true });
 
 const Blog = mongoose.model("Blog", blogSchema);
 

@@ -3,10 +3,12 @@ import assets from '../assets/assets';
 import { BlogContext } from '../context/BlogContext';
 import AOS from "aos";
 import { backendUrl } from '../App';
+import { useNavigate } from 'react-router-dom';
 
 const BlogHeroSession = () => {
     const { blogData } = useContext(BlogContext)
     const [activeBlog, setActiveBlog] = useState([]);
+    const navigate = useNavigate()
 
     useEffect(() => {
         let index = 0;
@@ -28,8 +30,10 @@ const BlogHeroSession = () => {
     return (
         <div className="w-full h-auto relative flex justify-center items-center pb-14 mt-4">
             {/* Hero Image */}
-            <div
-                className="w-full flex justify-start items-end h-[25rem] sm:h-[30rem] md:h-[35rem] lg:h-[40rem] rounded-xl duration-300 animate-fadeIn"
+            <div onClick={() => {
+                navigate(`/blog/${activeBlog?._id}`)
+            }}
+                className=" cursor-pointer w-full flex justify-start items-end h-[25rem] sm:h-[30rem] md:h-[35rem] lg:h-[40rem] rounded-xl duration-300 animate-fadeIn"
                 style={{
                     backgroundImage: `url(${activeBlog?.picture
                         ? `${backendUrl}/${activeBlog.picture.replace(/\\/g, "/")}`

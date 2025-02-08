@@ -1,11 +1,13 @@
 const Blog = require("../modules/blog.module");
+const User = require("../modules/user.module");
 
 const createBlog = async (req, res) => {
     try {
-        const { title, content, category, } = req.body;
+        const { title, content, category } = req.body;
         const { _id: userId } = req.user;
         const picture = req.file ? req.file.path : null;
 
+        // Create a new Blog instance
         const newBlog = new Blog({
             title,
             content,
@@ -15,6 +17,16 @@ const createBlog = async (req, res) => {
         });
 
         const savedBlog = await newBlog.save();
+
+        // Find the user and update their blog list
+        const user = await User.findById(userId);
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+        
+        user.blog.push(savedBlog._id);
+        await user.save();
+
         res.status(201).json({
             message: "Blog created successfully",
             blog: savedBlog
@@ -25,6 +37,7 @@ const createBlog = async (req, res) => {
         res.status(500).json({ message: 'Error creating blog', error: error.message });
     }
 };
+
 
 const getAllBlog = async (req, res) => {
     try {

@@ -11,6 +11,7 @@ import PagesLayout from "./layout/PagesLayout";
 import ContactLayout from "./layout/ContactLayout";
 import Home from "./pages/Home";
 import LoginPage from "./pages/LoginPage";
+import AuthorProfile from "./pages/AuthorProfile";
 import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
 export const backendUrl = import.meta.env.VITE_BACKEND_URL;
@@ -39,6 +40,7 @@ function App() {
         <Route path="pages" element={<PagesLayout />} />
         <Route path="contact" element={<ContactLayout />} />
         {token ? <Route path="profile" element={<Profile />} /> : ""}
+        <Route path="author-profile" element={<AuthorProfile />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </>

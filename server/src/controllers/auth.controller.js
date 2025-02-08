@@ -15,7 +15,7 @@ const register = async (req, res) => {
         const existEmail = await User.findOne({ email })
 
         if (existEmail) return res.status(400).json({ message: "Email already exists" })
-            
+
         if (password.length < 8) {
             return res.status(400).json({ message: "Password must be at least 8 characters" })
         }
@@ -44,13 +44,13 @@ const register = async (req, res) => {
 const login = async (req, res) => {
     try {
         const { email, password } = req.body
-        
+
         const user = await User.findOne({ email })
-        
+
         if (!user) return res.status(400).json({ message: "Invalid email or password" })
- 
+
         const isMatch = await bcrypt.compare(password, user.password)
-        
+
         if (!isMatch) return res.status(400).json({ message: "Invalid email or password" })
         const token = await generateToken(res, user._id)
         res.json({
@@ -61,7 +61,7 @@ const login = async (req, res) => {
         console.error("Error Login user ", error.message);
         res.status(500).json({ message: "Error logging in user", error: error.message });
     }
-} 
+}
 
 const logout = async (req, res) => {
     try {
@@ -78,4 +78,16 @@ const logout = async (req, res) => {
     }
 }
 
-module.exports = { register, login, logout }
+const authorProfile = async () => {
+    try {
+        const { _id } = req.params
+        const user = await User.findById(_id).populate()
+        if (!user) return res.status(404).json({
+            message: "User not found"
+        })
+        res.json(user)
+    } catch (error) {
+
+    }
+}
+module.exports = { register, login, logout, authorProfile }

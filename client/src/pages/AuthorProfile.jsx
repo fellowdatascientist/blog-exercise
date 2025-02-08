@@ -1,18 +1,24 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import assets from '../assets/assets'; // Make sure to import assets if not already
 import { BlogContext } from '../context/BlogContext';
 import { backendUrl } from '../App';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 
-const LatestPost = () => {
-  const { blogData, getBlog } = useContext(BlogContext);
+const AuthorProfile = () => {
+  const { fetchAuthor  } = useContext(AuthContext);
+  const { _id } = useLocation()
   const navigate = useNavigate()
+
+  useEffect(()=>{
+    fetchAuthor(_id)
+  },[])
 
   return (
     <div className="w-full h-auto px-6 py-8 dark:text-white ">
       <h2 className="text-2xl sm:text-3xl font-bold mb-6">Latest Post</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 ">
-        {blogData?.map((item, index) => (
+        {Array?.map((item, index) => (
           <div key={index} onClick={()=>navigate(`/blog/${item._id}`)} className="border border-gray-200 p-6 bg-white dark:bg-[#181A2A] dark:border-[#242535] rounded-xl shadow-lg overflow-hidden transition-all hover:shadow-xl hover:scale-105">
             {/* Thumbnail */}
             <div
@@ -51,16 +57,8 @@ const LatestPost = () => {
           </div >
         ))}
       </div >
-      {/* Centered View All Post Button */}
-      < div className="flex justify-center mt-6" >
-        <button onClick={()=>{
-          navigate('/blog')
-          window.scrollTo(0,0)}} className="w-fit px-6 py-3 border border-gray-300 text-gray-500 font-medium rounded-lg text-sm sm:text-base hover:bg-gray-100 transition-all">
-          View All Posts
-        </button>
-      </div >
     </div >
   );
 };
 
-export default LatestPost;
+export default AuthorProfile;

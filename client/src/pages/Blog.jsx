@@ -43,7 +43,6 @@ const Blog = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {visiblePosts.map((item, index) => (
             <div onClick={()=>{
-              console.log(item);
               navigate(`/blog/${item._id}`)
             }}
               key={index}
