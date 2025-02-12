@@ -4,6 +4,7 @@ import Comments from '../components/Comments';
 import { BlogContext } from '../context/BlogContext';
 import { useParams } from 'react-router-dom';
 import { backendUrl } from '../App';
+import axios from 'axios';
 
 const SinglePage = () => {
     const { comment, setComment, comments, setComments, getBlog } = useContext(BlogContext);
@@ -47,10 +48,22 @@ const SinglePage = () => {
         }
     };
 
+    const onDelete = async(_id)=>{
+        try {
+            const res = await axios.get(`${backendUrl}/v1/api/blog/delete-blog/${_id}`)
+            const data = res.data
+            console.log(data);
+        } catch (error) {
+            console.log('error in blog delete')
+            console.log('error:',error)
+        }
+    }
+
     return (
         <div className='flex flex-col gap-6 py-10 px-4 md:px-10'>
             {/* Category Badge */}
             <p className='p-2 w-fit bg-blue-500 text-white text-center rounded-lg'>{blog?.category || 'Technology'}</p>
+            <button onClick={()=>onDelete(blog._id)} className='p-2 w-fit bg-blue-500 text-white text-center rounded-lg'>Delete</button>
 
             {/* Title */}
             <h1 className='text-4xl font-bold mb-6 leading-snug dark:text-white'>{blog?.title}</h1>

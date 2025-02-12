@@ -49,6 +49,32 @@ const getAllBlog = async (req, res) => {
     }
 }
 
+const deteteBlog = async (req,res)=>{
+    try {
+        const blogId = req.params.id
+        console.log(blogId);
+        const blog = await Blog.findByIdAndDelete(blogId)
+        console.log(blog)
+        res.status(200).json({
+            message: "Blog deleted successfully",blog
+        })
+
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+const getTodayBlog = async (req,res)=>{
+    try {
+        const date = new Date("2025-02-12")
+        console.log(date)
+        const blog = await Blog.find({publishedAt:"2025-02-12"})
+        res.status(200).json(blog);
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 const getBlogById = async (req, res) => {
     try {
         const blogId = req.params.id;
@@ -63,4 +89,4 @@ const getBlogById = async (req, res) => {
         res.status(500).json({ message: 'Error fetching blog', error: error.message });
     }
 }
-module.exports = { createBlog, getAllBlog, getBlogById }
+module.exports = { createBlog, getAllBlog, getBlogById ,getTodayBlog,deteteBlog}

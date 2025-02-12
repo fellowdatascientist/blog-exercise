@@ -43,7 +43,7 @@ const LatestPost = () => {
                 />
 
                 <div className="flex space-x-2 text-gray-600 text-xs sm:text-sm">
-                  <p className="font-medium">{item['userId']?.name || 'John Doe'}</p>
+                  <p className="font-medium">{item['userId']?.name || 'John Doe'} {item['userId']?.email || 'John@gmail.com'}</p>
                   <p>{new Date(item?.publishedAt)?.toDateString()}</p>
                 </div>
               </div>
